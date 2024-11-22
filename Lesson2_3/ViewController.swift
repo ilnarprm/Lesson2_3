@@ -67,7 +67,11 @@ class ViewController: UIViewController {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
         return $0
-    }(UIButton())
+    }(UIButton(primaryAction: UIAction(handler: {[weak self]_ in
+        guard let self else { return }
+        let vc = SecondViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    })))
     
     lazy var uslugi = {
         $0.text = "Услуги"
